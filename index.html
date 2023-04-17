@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!--AGREGAMOS EL CDN DE VUE-->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <div id="app"></div>
+
+
+
+    <script>
+
+        //El bojeto principal de vue es el objeto que acabmos de crear vm que es e objeto que se 
+        // conoce como el aplication, el objeto que contiene toda la apicacion y puede tener todos ls
+        // componentes que necesitemos
+        const vm = Vue.createApp({
+            // data() {
+            //     return { // Aqui se declaran nuestras variables
+            //         // tipoAtributo: "src",
+            //         //img: "https://assets.pokemon.com/assets/cms2/img/pokedex/full/009.png"
+            //     };
+            // },
+
+            //     TEMPLATE
+            //template: `<img v-bind:src="img" v-bind:alt="img"/>`,
+            // Si deseamos que los atributos sean variables entonces para hacer dinamico podriamos usar
+            //  los dobles corchetes ejem: en vez de ir v-bind:src="img" iria v-bind:[tipoAtributo]="img"
+
+
+            //  -----------------------------------   v-on  -----------------------------
+
+            // data() {
+            //     return { // Aqui se declaran nuestras variables
+            //         counter: 0
+            //     };
+            // },
+
+            // methods: { // Aqui van los metodos y funcions
+            //     increment() {
+            //         this.counter++; //No olvidar usar this
+            //         console.log("click")
+            //     }
+            // },
+
+            // //     TEMPLATE
+            // template: `<button v-on:click="increment">{{counter}}<button/>`
+
+
+            //  -----------------------------------   v-on > submit -----------------------------
+            // data() {
+            //     return {
+            //         counter: 0
+            //     };
+            // },
+
+            // methods: { // Aqui van los metodos y funcions
+            //     submit(e) {
+            //         this.counter++; //No olvidar usar this
+            //         console.log(e)
+            //     }
+            // },
+
+            // //     TEMPLATE
+            // template: `<form v-on:click="submit"><button>{{counter}}<button/><form/>`
+
+            //  -----------------------------------  Inputs ractivos  -----------------------------
+
+            data() {
+                return { // Aqui se declaran nuestras variables
+                    text: "Hello vue :)"
+                }
+            },
+
+            methods: { // Aqui van los metodos y funcions
+                input(e) {
+                    this.text = e.target.value;
+                    console.log(e)
+                }
+            },
+
+            //      TEMPLATE
+            template: `
+            <p>{{text}}</p>
+            <input type="text" v-on:input="input">
+            `
+            // el v-on de tipo input hace que apenas teclee se actualice a diferencia del 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            // //  -----------------------------------    -----------------------------
+
+            // data() {
+            //     return { // Aqui se declaran nuestras variables
+
+            //     }
+            // },
+
+            // methods: { // Aqui van los metodos y funcions
+
+            // },
+
+            // //      TEMPLATE
+            // template: `<form v-on:click="submit"><button>{{counter}}<button/><form/>`
+
+
+
+
+
+        }).mount("#app")
+
+        console.log(vm)
+    </script>
+
+</body>
+
+</html>
