@@ -73,25 +73,207 @@
 
             //  -----------------------------------  Inputs ractivos  -----------------------------
 
+            //data() {
+            //    return { // Aqui se declaran nuestras variables
+            //        text: "Hello vue :)"
+            //    }
+            //},
+
+            //methods: { // Aqui van los metodos y funcions
+            //    insertar(e) {
+            //        this.text = e.target.value;
+            //        console.log(e)
+            //    }
+            //},
+
+            //      TEMPLATE
+            //template: `
+            //<p>{{text}}</p>
+            //<input 
+            //    type="text" 
+            //    v-on:input="insertar" 
+            //    v-bind:value="text"
+            //>
+            //`
+            // el v-on de tipo input hace que apenas teclee se actualice a diferencia del 
+
+
+            //  -----------------------------------    v-model      -----------------------------
+
+            //data() {
+            //    return { // Aqui se declaran nuestras variables
+            //        texto: "Hello vue :)"
+            //    }
+            //},
+
+            ////      TEMPLATE
+            //template: `
+            //<p>{{texto}}</p>
+            //<input 
+            //    type="text" 
+            //    v-model="texto"
+            //>
+            //`
+            // El v-model quiere decir en este caso que lo que yo ingrese por el  input sera 
+            // igualado a la variable texto
+            // el v-on de tipo input hace que apenas teclee se actualice a diferencia del 
+
+            
+            //  -----------------------------------    computed      -----------------------------
+
+            //data() {
+            //return {
+            //        firstName: "Raul",
+            //        lastName:"Ventura",
+            //        now: new Date()
+            //    };
+            //},
+
+            //computed:{
+            //    fullName(){
+            //        return this.firstName+" "+this.lastName;
+            //    },
+
+            //    today(){
+            //        return this.now.toLocaleDateString();
+            //    }                
+            //},
+
+
+            ////      TEMPLATE
+            //template: `
+            //<div>{{ fullName }}</div>
+            //<div>{{ today }}</div>
+            //`
+
+
+
+            //  -----------------------------------  Watchers  -----------------------------
+
+            //data() {
+            //    return {
+            //        text: "Hola vue"
+
+            //    }
+            //},
+
+            //watch:{ // El watcher debe tener el mismo nombre de la variable que va a escuchar
+            //    text(valorNuevo, valorAntiguo){ // Cuando se le pasa 2 parametros por defecto el 2do parametro
+            //        console.log("Watcher", valorNuevo, valorAntiguo)  // Es el valor antiguo que tenia la variable
+            //    }
+            //},
+
+            //      TEMPLATE
+            //template: `{{text}}`
+
+
+            // Otro Ejemplo
+            //data() {
+            //    return {
+            //        text: "Puerta cerrada",
+            //        open:false
+            //    }
+            //},
+
+            //watch:{ 
+            //    open(value){ 
+            //        if(value){
+            //            this.text="Puerta abierta";
+            //        }else{
+            //            this.text="Puerta cerrada";
+            //        }
+            //    }
+            //},
+
+            //computed:{
+            //    label(){
+            //        return this.open?"cerrar":"Abrir";
+            //    }
+            //},
+
+            //      TEMPLATE
+            //template: `
+            //<div>{{ text }}</div>
+            //<button @click="open=!open">{{ label }}</button>
+            //`
+
+            //  -----------------------------------  Estilos Reactivos  -----------------------------
+
+
             data() {
-                return { // Aqui se declaran nuestras variables
-                    text: "Hello vue :)"
+                return {
+                    text: "Puerta cerrada",
+                    open:false,
+                    styles:{
+                        backgroundColor:"#e5e5e5"
+                    }
+                };
+            },
+
+            watch:{ 
+                open(value){ 
+                    if(value){
+                        this.text="Puerta abierta";
+                        this.styles.backgroundColor="#b5e7a0"
+                    }else{
+                        this.text="Puerta cerrada";
+                        this.styles.backgroundColor="#eca1a6"
+                    }
                 }
             },
 
-            methods: { // Aqui van los metodos y funcions
-                input(e) {
-                    this.text = e.target.value;
-                    console.log(e)
+            computed:{
+                label(){
+                    return this.open?"cerrar":"Abrir";
                 }
             },
 
             //      TEMPLATE
             template: `
-            <p>{{text}}</p>
-            <input type="text" v-on:input="input">
+            <div class="container" :style="styles">
+                <h2>{{ text }}</h2>
+                <button @click="open=!open">{{ label }}</button>
+            </div>
             `
-            // el v-on de tipo input hace que apenas teclee se actualice a diferencia del 
+
+        }).mount("#app")
+
+        console.log(vm)
+    </script>
+
+    <style>
+
+        html, body{
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        #app, .container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            width: 100%;
+            height: 100%;
+        }
+
+        button {
+            margin-top: 24px;
+            border: none;
+            background-color: white;
+            padding: 8px 24px;
+            border-radius: 12px;
+        }
+        .closed {
+            background-color: #eca1a6;
+        }
+        .open {
+            background-color: #b5e7a0;
+        }
+
+
+    </style>
 
 
 
@@ -114,6 +296,17 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+<!-- 
 
             // //  -----------------------------------    -----------------------------
 
@@ -130,14 +323,11 @@
             // //      TEMPLATE
             // template: `<form v-on:click="submit"><button>{{counter}}<button/><form/>`
 
+ -->
 
 
 
 
-        }).mount("#app")
-
-        console.log(vm)
-    </script>
 
 </body>
 
